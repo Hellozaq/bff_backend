@@ -1,6 +1,7 @@
 package com.microservicio.bff_backend.service.usuario;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,18 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .bodyToMono(ResponseModel.class)
                 .block();
     }
+
+    @Override
+    public ResponseModel cambiarContrasena(String nuevaContrasena, String token) {
+        return usuariosWebClient.put()
+                .uri("/cambiar-contrasena")
+                .header("Authorization", token)
+                .bodyValue(Map.of("nuevaContrasena", nuevaContrasena))
+                .retrieve()
+                .bodyToMono(ResponseModel.class)
+                .block();
+    }
+
 
     @Override
     public ResponseModel eliminarUsuario(String email) {

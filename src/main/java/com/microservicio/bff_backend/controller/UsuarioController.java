@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,6 +42,11 @@ public class UsuarioController {
     @PutMapping("/{id}")
     public ResponseModel actualizarUsuario(@PathVariable Integer id, @RequestBody Usuario usuario) {
         return usuarioService.actualizarUsuario(id, usuario);
+    }
+
+    @PutMapping("/cambiar-contrasena")
+    public ResponseModel cambiarContrasena(@RequestBody String nuevaContrasena, @RequestHeader("Authorization") String token) {
+        return usuarioService.cambiarContrasena(nuevaContrasena, token);
     }
 
     @DeleteMapping("/{email}")

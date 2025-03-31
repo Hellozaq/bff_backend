@@ -16,4 +16,9 @@ public class WebClientConfig {
     public WebClient perfilesWebClient() {
         return WebClient.builder().baseUrl("http://localhost:8085/api/perfiles").build();
     }
+
+    @Bean
+    public WebClient autenticacionWebClient() {
+        return WebClient.builder().baseUrl("http://localhost:8085/api/authentication").build();
+    }
 }

@@ -10,6 +10,7 @@ public interface UsuarioService {
     Usuario getUsuarioById(Integer id);
     ResponseModel crearUsuario(Usuario usuario);
     ResponseModel actualizarUsuario(Integer id, Usuario usuario);
+    ResponseModel cambiarContrasena(String nuevaContrasena, String token);
     ResponseModel eliminarUsuario(String email);
     ResponseModel asignarPerfil(Integer idUsuario, Integer idPerfil);
 }
