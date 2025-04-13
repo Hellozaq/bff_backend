@@ -82,4 +82,20 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .bodyToMono(ResponseModel.class)
                 .block();
     }
+
+    //---------- GraphQL ----------//
+    @Override
+    public List<Usuario> getUsuariosPorPerfil(String nombrePerfil) {
+        return usuariosWebClient.get()
+                .uri(uriBuilder -> uriBuilder
+                    .path("/porPerfil")
+                    .queryParam("nombrePerfil", nombrePerfil)
+                    .build())
+                .retrieve()
+                .bodyToFlux(Usuario.class)
+                .collectList()
+                .block();
+    }
+
+
 }

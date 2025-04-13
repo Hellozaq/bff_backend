@@ -13,4 +13,6 @@ public interface UsuarioService {
     ResponseModel cambiarContrasena(String nuevaContrasena, String token);
     ResponseModel eliminarUsuario(String email);
     ResponseModel asignarPerfil(Integer idUsuario, Integer idPerfil);
+    List<Usuario> getUsuariosPorPerfil(String nombrePerfil);//GraphQL
+
 }

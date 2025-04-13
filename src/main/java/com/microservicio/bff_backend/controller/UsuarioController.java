@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservicio.bff_backend.model.ResponseModel;
@@ -58,4 +59,10 @@ public class UsuarioController {
     public ResponseModel asignarPerfil(@PathVariable Integer id, @PathVariable Integer idPerfil) {
         return usuarioService.asignarPerfil(id, idPerfil);
     }
+
+    // @GetMapping("/porPerfil")
+    // public List<Usuario> getUsuariosPorPerfil(@RequestParam String nombrePerfil) {
+    //     return usuarioService.getUsuariosPorPerfil(nombrePerfil);
+    // }
+
 }
