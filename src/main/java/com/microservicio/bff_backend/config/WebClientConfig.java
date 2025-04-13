@@ -24,6 +24,7 @@ public class WebClientConfig {
 
     @Bean
     public WebClient autenticacionWebClient(@Value("${url.usuarios}") String baseUrl) {
+        System.out.println("➡️ URL recibida en autenticacionWebClient: " + baseUrl); // Línea de log
         return WebClient.builder()
                 .baseUrl(baseUrl + "/api/authentication")
                 .build();
