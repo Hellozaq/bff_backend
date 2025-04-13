@@ -60,9 +60,9 @@ public class UsuarioController {
         return usuarioService.asignarPerfil(id, idPerfil);
     }
 
-    // @GetMapping("/porPerfil")
-    // public List<Usuario> getUsuariosPorPerfil(@RequestParam String nombrePerfil) {
-    //     return usuarioService.getUsuariosPorPerfil(nombrePerfil);
-    // }
+    @GetMapping("/porPerfil")
+    public List<Usuario> getUsuariosPorPerfil(@RequestParam String nombrePerfil) {
+        return usuarioService.getUsuariosPorPerfil(nombrePerfil);
+    }
 
 }
