@@ -1,5 +1,6 @@
 package com.microservicio.bff_backend.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -8,17 +9,23 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class WebClientConfig {
 
     @Bean
-    public WebClient usuariosWebClient() {
-        return WebClient.builder().baseUrl("http://localhost:8085/api/usuarios").build();
+    public WebClient usuariosWebClient(@Value("${url.usuarios}") String baseUrl) {
+        return WebClient.builder()
+                .baseUrl(baseUrl + "/api/usuarios")
+                .build();
     }
 
     @Bean
-    public WebClient perfilesWebClient() {
-        return WebClient.builder().baseUrl("http://localhost:8085/api/perfiles").build();
+    public WebClient perfilesWebClient(@Value("${url.usuarios}") String baseUrl) {
+        return WebClient.builder()
+                .baseUrl(baseUrl + "/api/perfiles")
+                .build();
     }
 
     @Bean
-    public WebClient autenticacionWebClient() {
-        return WebClient.builder().baseUrl("http://localhost:8085/api/authentication").build();
+    public WebClient autenticacionWebClient(@Value("${url.usuarios}") String baseUrl) {
+        return WebClient.builder()
+                .baseUrl(baseUrl + "/api/authentication")
+                .build();
     }
 }
