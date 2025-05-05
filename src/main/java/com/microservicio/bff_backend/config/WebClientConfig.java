@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+
 @Configuration
 public class WebClientConfig {
 
@@ -22,10 +25,12 @@ public class WebClientConfig {
                 .build();
     }
 
-    @Bean(name = "autenticacionWebClient")
+@Bean(name = "autenticacionWebClient")
     public WebClient autenticacionWebClient(@Value("${backend.usuarios.url}") String baseUrl) {
         return WebClient.builder()
-                .baseUrl(baseUrl + "/api/authentication")
-                .build();
+            .baseUrl(baseUrl + "/api/authentication")
+            .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+            .build();
     }
 }
