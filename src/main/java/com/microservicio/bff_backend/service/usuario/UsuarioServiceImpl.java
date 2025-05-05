@@ -1,12 +1,12 @@
 package com.microservicio.bff_backend.service.usuario;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.microservicio.bff_backend.model.CambioContrasenaDto;
 import com.microservicio.bff_backend.model.ResponseModel;
 import com.microservicio.bff_backend.model.Usuario;
 
@@ -54,11 +54,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public ResponseModel cambiarContrasena(String nuevaContrasena, String token) {
+    public ResponseModel cambiarContrasena(CambioContrasenaDto cambioContrasena, String token) {
         return usuariosWebClient.put()
                 .uri("/cambiar-contrasena")
                 .header("Authorization", token)
-                .bodyValue(Map.of("nuevaContrasena", nuevaContrasena))
+                .bodyValue(cambioContrasena)
                 .retrieve()
                 .bodyToMono(ResponseModel.class)
                 .block();

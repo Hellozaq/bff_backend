@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservicio.bff_backend.model.CambioContrasenaDto;
 import com.microservicio.bff_backend.model.ResponseModel;
 import com.microservicio.bff_backend.model.Usuario;
 import com.microservicio.bff_backend.service.usuario.UsuarioService;
@@ -46,8 +47,8 @@ public class UsuarioController {
     }
 
     @PutMapping("/cambiar-contrasena")
-    public ResponseModel cambiarContrasena(@RequestBody String nuevaContrasena, @RequestHeader("Authorization") String token) {
-        return usuarioService.cambiarContrasena(nuevaContrasena, token);
+    public ResponseModel cambiarContrasena(@RequestBody CambioContrasenaDto cambioContrasena, @RequestHeader("Authorization") String token) {
+        return usuarioService.cambiarContrasena(cambioContrasena, token);
     }
 
     @DeleteMapping("/{email}")
