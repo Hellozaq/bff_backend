@@ -1,5 +1,6 @@
 package com.microservicio.bff_backend.service.perfil;
 
+import com.microservicio.bff_backend.model.EliminarPerfilDto;
 import com.microservicio.bff_backend.model.Perfil;
 import com.microservicio.bff_backend.model.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,11 +53,12 @@ public class PerfilServiceImpl implements PerfilService {
     }
 
     @Override
-    public ResponseModel delete(Integer id) {
-        return perfilesWebClient.delete()
-                .uri("/{id}", id)
-                .retrieve()
-                .bodyToMono(ResponseModel.class)
-                .block();
+    public ResponseModel delete(EliminarPerfilDto eliminarPerfilDto) {
+        return perfilesWebClient.post()
+            .uri("/delete-perfil")
+            .bodyValue(eliminarPerfilDto)
+            .retrieve()
+            .bodyToMono(ResponseModel.class)
+            .block();
     }
 }

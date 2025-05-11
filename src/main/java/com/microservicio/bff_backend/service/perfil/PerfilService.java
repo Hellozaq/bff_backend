@@ -1,5 +1,6 @@
 package com.microservicio.bff_backend.service.perfil;
 
+import com.microservicio.bff_backend.model.EliminarPerfilDto;
 import com.microservicio.bff_backend.model.Perfil;
 import com.microservicio.bff_backend.model.ResponseModel;
 
@@ -10,5 +11,5 @@ public interface PerfilService {
     Perfil getById(Integer id);
     ResponseModel create(Perfil perfil);
     ResponseModel update(Integer id, Perfil perfil);
-    ResponseModel delete(Integer id);
+    ResponseModel delete(EliminarPerfilDto eliminarPerfilDto);
 }

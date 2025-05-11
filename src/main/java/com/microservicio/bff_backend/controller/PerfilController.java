@@ -1,5 +1,6 @@
 package com.microservicio.bff_backend.controller;
 
+import com.microservicio.bff_backend.model.EliminarPerfilDto;
 import com.microservicio.bff_backend.model.Perfil;
 import com.microservicio.bff_backend.model.ResponseModel;
 import com.microservicio.bff_backend.service.perfil.PerfilService;
@@ -36,8 +37,13 @@ public class PerfilController {
         return perfilService.update(id, perfil);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseModel eliminarPerfil(@PathVariable Integer id) {
-        return perfilService.delete(id);
+    // @DeleteMapping("/{id}")
+    // public ResponseModel eliminarPerfil(@PathVariable Integer id) {
+    //     return perfilService.delete(id);
+    // }
+
+    @PostMapping("/eliminar-perfil")
+    public ResponseModel eliminarPerfil(@RequestBody EliminarPerfilDto eliminarPerfilDto) {
+        return perfilService.delete(eliminarPerfilDto);
     }
 }
