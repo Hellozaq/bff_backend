@@ -34,7 +34,7 @@ public class JwtTokenUtil {
         if (token.startsWith("Bearer ")) {
             token = token.substring(7);
         }
-        return Jwts.parserBuilder()
+        return Jwts.parser()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
