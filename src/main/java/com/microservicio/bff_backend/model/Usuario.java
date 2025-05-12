@@ -1,5 +1,6 @@
 package com.microservicio.bff_backend.model;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
@@ -45,4 +46,8 @@ public class Usuario {
 
     @Past(message = "La fecha de nacimiento debe ser una fecha pasada")
     private LocalDate fechaNacimiento;
+
+    @NotNull(message = "El perfil no debe ser nulo")
+    @Valid
+    private Perfil perfil;
 }
